@@ -14,17 +14,18 @@ cat > "$WEB_APP_DIR/.project.nix" << 'EOF'
 {
   projectName = "React Web App";
   workspace = 2;
+  tags = [ "frontend" "react" "web" ];
   environment = [
     {
       type = "browser";
       url = "http://localhost:3000";
       position = "left 50%";
-    },
+    }
     {
       type = "terminal";
       command = "npm start";
       position = "bottom-right 25%";
-    },
+    }
     {
       type = "editor";
       command = "nvim";
@@ -45,18 +46,19 @@ cat > "$API_DIR/.project.nix" << 'EOF'
 {
   projectName = "Node.js API Service";
   workspace = 3;
+  tags = [ "backend" "api" "nodejs" ];
   environment = [
     {
       type = "terminal";
       command = "npm run dev";
       position = "bottom 30%";
-    },
+    }
     {
       type = "editor";
       command = "nvim";
       files = [ "src/server.js" "src/routes.js" ];
       position = "top 70%";
-    },
+    }
     {
       type = "browser";
       url = "http://localhost:8080/api-docs";
@@ -75,17 +77,18 @@ cat > "$DATA_DIR/.project.nix" << 'EOF'
 {
   projectName = "Customer Data Analysis";
   workspace = 5;
+  tags = [ "data" "analysis" "jupyter" ];
   environment = [
     {
       type = "terminal";
       command = "jupyter lab";
       position = "bottom-left 20%";
-    },
+    }
     {
       type = "browser";
       url = "http://localhost:8888";
       position = "right 60%";
-    },
+    }
     {
       type = "editor";
       command = "nvim";
@@ -105,12 +108,13 @@ cat > "$GAME_DIR/.project.nix" << 'EOF'
 {
   projectName = "2D Game Engine";
   workspace = 7;
+  tags = [ "game" "cpp" "engine" ];
   environment = [
     {
       type = "terminal";
       command = "make && ./build/game";
       position = "bottom 25%";
-    },
+    }
     {
       type = "editor";
       command = "nvim";
