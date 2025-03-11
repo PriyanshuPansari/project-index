@@ -321,8 +321,8 @@ setup_environment() {
   fi
 
   # First, switch to the workspace
-  debug_log INFO "Switching to workspace $workspace"
-  trace_exec "hyprctl dispatch workspace \"$workspace\""
+  debug_log INFO "Switching to workspace special:project$workspace"
+  trace_exec "hyprctl dispatch workspace special:project$workspace"
 
   # Wait for the workspace switch to complete
   sleep 0.5
@@ -335,7 +335,7 @@ setup_environment() {
   if [ $? -ne 0 ] || [ -z "$env_items" ]; then
     debug_log WARN "Warning: Failed to extract environment or no environment specified"
     debug_log INFO "Launching a terminal in the project directory"
-    trace_exec "hyprctl dispatch exec -- \"alacritty --working-directory $directory\""
+    trace_exec "hyprctl dispatch exec -- \"kitty --working-directory $directory\""
     return 0
   fi
 
@@ -347,10 +347,10 @@ setup_environment() {
     "terminal")
       if [ -n "$command" ]; then
         debug_log INFO "Launching terminal with command: $command"
-        trace_exec "hyprctl dispatch exec -- \"alacritty --working-directory $directory -e bash -c '$command; exec bash'\""
+        trace_exec "hyprctl dispatch exec -- \"kitty --working-directory $directory -e bash -c '$command; exec bash'\""
       else
         debug_log INFO "Launching terminal in project directory"
-        trace_exec "hyprctl dispatch exec -- \"alacritty --working-directory $directory\""
+        trace_exec "hyprctl dispatch exec -- \"kitty --working-directory $directory\""
       fi
       ;;
 
@@ -361,10 +361,10 @@ setup_environment() {
 
         if [ -n "$files_args" ]; then
           debug_log INFO "Launching editor with files: $command $files_args"
-          trace_exec "hyprctl dispatch exec -- \"alacritty --working-directory $directory -e bash -c '$command $files_args'\""
+          trace_exec "hyprctl dispatch exec -- \"kitty --working-directory $directory -e bash -c '$command $files_args'\""
         else
           debug_log INFO "Launching editor: $command"
-          trace_exec "hyprctl dispatch exec -- \"alacritty --working-directory $directory -e bash -c '$command'\""
+          trace_exec "hyprctl dispatch exec -- \"kitty --working-directory $directory -e bash -c '$command'\""
         fi
       fi
       ;;
