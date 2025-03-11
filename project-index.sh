@@ -321,8 +321,8 @@ setup_environment() {
   fi
 
   # First, switch to the workspace
-  debug_log INFO "Switching to workspace special:project$workspace"
-  trace_exec "hyprctl dispatch workspace special:project$workspace"
+  debug_log INFO "Switching to workspace special:$project $workspace"
+  trace_exec "hyprctl dispatch workspace special:$project $workspace"
 
   # Wait for the workspace switch to complete
   sleep 0.5
